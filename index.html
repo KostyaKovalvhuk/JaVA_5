@@ -1,0 +1,169 @@
+<!DOCTYPE html>  
+<html lang="uk">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Форми користувача</title>  
+    <style>  
+        body {  
+            font-family: Arial, sans-serif;  
+            margin: 20px;  
+            padding: 20px;  
+            background-color: #f9f9f9;  
+        }  
+        .form-container {  
+            margin-bottom: 30px;  
+            padding: 15px;  
+            border: 1px solid #ccc;  
+            border-radius: 8px;  
+            background-color: #fff;  
+        }  
+        .result {  
+            margin-top: 15px;  
+            font-weight: bold;  
+        }  
+    </style>  
+</head>  
+<body>  
+
+<div class="form-container">  
+    <h2>Вибір напою</h2>  
+    <select id="beverage" onchange="showBeverage()">  
+        <option value="">Виберіть напій</option>  
+        <option value="кава">Кава</option>  
+        <option value="чай">Чай</option>  
+        <option value="сік">Сік</option>  
+    </select>  
+    <div class="result" id="beverageResult"></div>  
+</div>  
+
+<div class="form-container">  
+    <h2>День тижня</h2>  
+    <input type="text" id="dayInput" placeholder="Введіть день тижня">  
+    <button onclick="checkDay()">Перевірити</button>  
+    <div class="result" id="dayResult"></div>  
+</div>  
+
+<div class="form-container">  
+    <h2>Пора року</h2>  
+    <input type="number" id="monthInput" min="1" max="12" placeholder="Номер місяця">  
+    <button onclick="detectSeason()">Визначити пору року</button>  
+    <div class="result" id="seasonResult"></div>  
+</div>  
+
+<div class="form-container">  
+    <h2>Кількість днів у місяці</h2>  
+    <input type="number" id="daysMonthInput" min="1" max="12" placeholder="Номер місяця">  
+    <button onclick="daysInMonth()">Кількість днів</button>  
+    <div class="result" id="daysResult"></div>  
+</div>  
+
+<div class="form-container">  
+    <h2>Значення кольору</h2>  
+    <input type="text" id="colorInput" placeholder="Введіть колір">  
+    <button onclick="colorAction()">Перевірити колір</button>  
+    <div class="result" id="colorResult"></div>  
+</div>  
+
+<div class="form-container">  
+    <h2>Калькулятор</h2>  
+    <input type="number" id="number1" placeholder="Перше число">  
+    <input type="number" id="number2" placeholder="Друге число">  
+    <select id="operation">  
+        <option value="+">+</option>  
+        <option value="-">-</option>  
+        <option value="*">*</option>  
+        <option value="/">/</option>  
+    </select>  
+    <button onclick="calculate()">Обчислити</button>  
+    <div class="result" id="calcResult"></div>  
+</div>  
+
+<script>  
+    function showBeverage() {  
+        const beverage = document.getElementById("beverage").value;  
+        const result = document.getElementById("beverageResult");  
+        switch (beverage) {  
+            case "кава":  
+                result.textContent = "Ви вибрали каву.";  
+                break;  
+            case "чай":  
+                result.textContent = "Ви вибрали чай.";  
+                break;  
+            case "сік":  
+                result.textContent = "Ви вибрали сік.";  
+                break;  
+            default:  
+                result.textContent = "";  
+        }  
+    }  
+
+    function checkDay() {  
+        const day = document.getElementById("dayInput").value.toLowerCase();  
+        const weekdays = ["понеділок", "вівторок", "середа", "четвер", "п'ятниця"];  
+        const weekends = ["субота", "неділя"];  
+        const result = document.getElementById("dayResult");  
+        if (weekdays.includes(day)) {  
+            result.textContent = day.charAt(0).toUpperCase() + day.slice(1) + " - робочий день.";  
+        } else if (weekends.includes(day)) {  
+            result.textContent = day.charAt(0).toUpperCase() + day.slice(1) + " - вихідний.";  
+        } else {  
+            result.textContent = "Це не правильна назва дня тижня.";  
+        }  
+    }  
+
+    function detectSeason() {  
+        const month = parseInt(document.getElementById("monthInput").value);  
+        const result = document.getElementById("seasonResult");  
+        if (month === 12 || month <= 2) {  
+            result.textContent = "Зима";  
+        } else if (month >= 3 && month <= 5) {  
+            result.textContent = "Весна";  
+        } else if (month >= 6 && month <= 8) {  
+            result.textContent = "Літо";  
+        } else if (month >= 9 && month <= 11) {  
+            result.textContent = "Осінь";  
+        } else {  
+            result.textContent = "Некоректний номер місяця.";  
+        }  
+    }  
+
+    function daysInMonth() {  
+        const month = parseInt(document.getElementById("daysMonthInput").value);  
+        const result = document.getElementById("daysResult");  
+        const daysInEachMonth = [31, (new Date().getFullYear() % 4 === 0 ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];  
+        if (month >= 1 && month <= 12) {  
+            result.textContent = "У місяці " + month + " " + daysInEachMonth[month - 1] + " днів.";  
+        } else {  
+            result.textContent = "Некоректний номер місяця.";  
+        }  
+    }  
+
+    function colorAction() {  
+        const color = document.getElementById("colorInput").value.toLowerCase();  
+        const result = document.getElementById("colorResult");  
+        switch (color) {  
+            case "червоний":  
+                result.textContent = "Стоп!";  
+                break;  
+            case "зелений":  
+                result.textContent = "Йти!";  
+                break;  
+            case "жовтий":  
+                result.textContent = "Чекати!";  
+                break;  
+            default:  
+                result.textContent = "Некоректний колір.";  
+        }  
+    }  
+
+    function calculate() {  
+        const num1 = parseFloat(document.getElementById("number1").value);  
+        const num2 = parseFloat(document.getElementById("number2").value);  
+        const operation = document.getElementById("operation").value;  
+        const result = document.getElementById("calcResult");  
+        
+        let res;  
+        if (operation === "+") {  
+            res = num1 + num2;  
+        } else if (operation === "-") }
