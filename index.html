@@ -1,85 +1,18 @@
-<!DOCTYPE html>  
-<html lang="uk">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Форми користувача</title>  
-    <style>  
-        body {  
-            font-family: Arial, sans-serif;  
-            margin: 20px;  
-            padding: 20px;  
-            background-color: #f9f9f9;  
-        }  
-        .form-container {  
-            margin-bottom: 30px;  
-            padding: 15px;  
-            border: 1px solid #ccc;  
-            border-radius: 8px;  
-            background-color: #fff;  
-        }  
-        .result {  
-            margin-top: 15px;  
-            font-weight: bold;  
-        }  
-    </style>  
-</head>  
-<body>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
 
-<div class="form-container">  
-    <h2>Вибір напою</h2>  
-    <select id="beverage" onchange="showBeverage()">  
-        <option value="">Виберіть напій</option>  
-        <option value="кава">Кава</option>  
-        <option value="чай">Чай</option>  
-        <option value="сік">Сік</option>  
-    </select>  
-    <div class="result" id="beverageResult"></div>  
-</div>  
+    <script src="./js/script.js"></script>
+</body>
+</html>
 
-<div class="form-container">  
-    <h2>День тижня</h2>  
-    <input type="text" id="dayInput" placeholder="Введіть день тижня">  
-    <button onclick="checkDay()">Перевірити</button>  
-    <div class="result" id="dayResult"></div>  
-</div>  
-
-<div class="form-container">  
-    <h2>Пора року</h2>  
-    <input type="number" id="monthInput" min="1" max="12" placeholder="Номер місяця">  
-    <button onclick="detectSeason()">Визначити пору року</button>  
-    <div class="result" id="seasonResult"></div>  
-</div>  
-
-<div class="form-container">  
-    <h2>Кількість днів у місяці</h2>  
-    <input type="number" id="daysMonthInput" min="1" max="12" placeholder="Номер місяця">  
-    <button onclick="daysInMonth()">Кількість днів</button>  
-    <div class="result" id="daysResult"></div>  
-</div>  
-
-<div class="form-container">  
-    <h2>Значення кольору</h2>  
-    <input type="text" id="colorInput" placeholder="Введіть колір">  
-    <button onclick="colorAction()">Перевірити колір</button>  
-    <div class="result" id="colorResult"></div>  
-</div>  
-
-<div class="form-container">  
-    <h2>Калькулятор</h2>  
-    <input type="number" id="number1" placeholder="Перше число">  
-    <input type="number" id="number2" placeholder="Друге число">  
-    <select id="operation">  
-        <option value="+">+</option>  
-        <option value="-">-</option>  
-        <option value="*">*</option>  
-        <option value="/">/</option>  
-    </select>  
-    <button onclick="calculate()">Обчислити</button>  
-    <div class="result" id="calcResult"></div>  
-</div>  
-
-<script>  
+<!-- <script>  
     function showBeverage() {  
         const beverage = document.getElementById("beverage").value;  
         const result = document.getElementById("beverageResult");  
@@ -166,4 +99,4 @@
         let res;  
         if (operation === "+") {  
             res = num1 + num2;  
-        } else if (operation === "-") }
+        } else if (operation === "-") } -->
